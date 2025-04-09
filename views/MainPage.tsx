@@ -8,7 +8,10 @@ export function MainPage() {
     return (
         <View style={styles.container}>
             <Home/>
-            <LinearGradient colors={['transparent', '#FB5454']} locations={[0.5, 1]} style={styles.gradient}/>
+            <LinearGradient
+                colors={['transparent', 'rgba(251,84,84,0.4)']}
+                locations={[0.5, 1]}
+                style={styles.gradient}/>
             <View style={styles.bottomNavBar}></View>
         </View>
     )
@@ -24,6 +27,7 @@ const styles  = StyleSheet.create({
         left: 0,
         right: 0,
         bottom: 0,
+        zIndex: -1
     },
     bottomNavBar: {
         flex: 1,

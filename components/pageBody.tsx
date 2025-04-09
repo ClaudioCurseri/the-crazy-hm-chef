@@ -18,5 +18,6 @@ const styles = StyleSheet.create({
     body: {
         flex: 16,
         marginHorizontal: 15,
+        alignItems: "center",
     }
 })

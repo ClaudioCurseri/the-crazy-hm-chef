@@ -23,5 +23,7 @@ const styles = StyleSheet.create({
         fontSize: 45,
         padding: 10,
         paddingLeft: 15,
+        fontWeight: 'bold',
+        color: 'rgba(251,84,84,1)',
     }
 })
