@@ -1,12 +1,12 @@
-import {TopAppBar} from "../components/topAppBar";
-import {PageBody} from "../components/pageBody";
+import {TopAppBar} from "../../components/topAppBar";
+import {PageBody} from "../../components/pageBody";
 import {Text} from "react-native";
 
 
-export function NewRecipe() {
+export default function MyRecipes() {
     return (
         <>
-            <TopAppBar title={'New Recipe'}/>
+            <TopAppBar title={'My Recipes'}/>
             <PageBody>
                 <Text>
                     Content

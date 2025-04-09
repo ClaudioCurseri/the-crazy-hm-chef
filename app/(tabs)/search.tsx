@@ -1,9 +1,9 @@
-import {TopAppBar} from "../components/topAppBar";
-import {PageBody} from "../components/pageBody";
+import {TopAppBar} from "../../components/topAppBar";
+import {PageBody} from "../../components/pageBody";
 import {Text} from "react-native";
 
 
-export function Search() {
+export default function Search() {
     return (
         <>
             <TopAppBar title={'Search Recipes'} />

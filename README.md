@@ -21,6 +21,7 @@ The app was developed by me as part of an app development project for the Munich
 - React 18.3.1
 - React Native 0.76.9
 - TypeScript 5.3.3 or later
+- ...and other dependencies specified in the ``package.json`` file
 
 ### Clone the repository
 
