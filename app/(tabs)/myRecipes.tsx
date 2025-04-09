@@ -1,6 +1,7 @@
 import {TopAppBar} from "../../components/topAppBar";
 import {PageBody} from "../../components/pageBody";
 import {Text} from "react-native";
+import Background from "../../components/background";
 
 
 export default function MyRecipes() {
@@ -12,6 +13,7 @@ export default function MyRecipes() {
                     Content
                 </Text>
             </PageBody>
+            <Background/>
         </>
     )
 }
