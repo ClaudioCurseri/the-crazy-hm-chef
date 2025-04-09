@@ -1,8 +1,8 @@
-import Home from "./Home";
+import {MainPage} from "./MainPage";
 
 
 export default function App() {
   return (
-    <Home/>
+    <MainPage/>
   );
 }

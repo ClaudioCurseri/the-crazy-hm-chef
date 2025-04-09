@@ -1,20 +1,21 @@
 import {StyleSheet, Text, View} from "react-native";
-import {StatusBar} from "expo-status-bar";
+import {TopAppBar} from "../components/topAppBar";
+import {PageBody} from "../components/pageBody";
 
 export default function Home() {
     return (
         <View style={styles.container}>
-        <Text>Open up App.tsx to start working on your app!</Text>
-        <StatusBar style="auto" />
-    </View>
+            <TopAppBar title={"Home"} />
+            <PageBody>
+                <Text>Test</Text>
+            </PageBody>
+        </View>
+
     )
 }
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-    }
+        flex: 10,
+    },
 });
