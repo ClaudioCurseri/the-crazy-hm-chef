@@ -30,7 +30,7 @@ const styles  = StyleSheet.create({
         zIndex: -1
     },
     bottomNavBar: {
-        flex: 1,
+        flex: 2,
         borderWidth: 5,
         borderStyle: 'solid',
         borderColor: 'grey',
