@@ -17,6 +17,7 @@
       "bundleIdentifier": "com.hm.curseri.thecrazyhmchef"
     },
     "android": {
+      "softwareKeyboardLayoutMode": "pan",
       "package": "com.hm.curseri.thecrazyhmchef"
     },
     "web": {
