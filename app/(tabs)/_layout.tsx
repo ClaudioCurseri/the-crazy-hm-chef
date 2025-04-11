@@ -2,6 +2,7 @@ import {Tabs} from 'expo-router';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
+import {Pressable} from "react-native";
 
 export default function TabLayout() {
     return (
@@ -15,11 +16,10 @@ export default function TabLayout() {
                     elevation: 0,
                     minHeight: 55,
                 },
-                tabBarItemStyle: {
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    height: '100%',
+                tabBarLabelStyle: {
+                    fontWeight: 'bold'
                 },
+                tabBarButton: (props) => <Pressable {...props} android_ripple={{ color: 'transparent' }} />
             }}
         >
             <Tabs.Screen name="index" options={{
