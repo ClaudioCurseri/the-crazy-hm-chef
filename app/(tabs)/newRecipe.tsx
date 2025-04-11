@@ -3,9 +3,26 @@ import PageBody from "../../components/pageBody";
 import {StyleSheet, Text} from "react-native";
 import Background from "../../components/background";
 import CustomTextInput from "../../components/customTextInput";
-
+import {useState} from "react";
+import * as ImagePicker from "expo-image-picker";
+import CustomImagePicker from "../../components/imagePicker";
 
 export default function NewRecipe() {
+    const [image, setImage] = useState<string | null>(null);
+
+    const pickImage = async () => {
+        let result = await ImagePicker.launchImageLibraryAsync({
+            mediaTypes: ['images'],
+            allowsEditing: true,
+            aspect: [4, 3],
+            quality: 1,
+        });
+
+        if (!result.canceled) {
+            setImage(result.assets[0].uri);
+        }
+    };
+
     return (
         <><TopAppBar title={'New Recipe'}/>
             <PageBody>
@@ -20,6 +37,7 @@ export default function NewRecipe() {
                 <Text style={styles.subtitle}>
                     Add an Image
                 </Text>
+                <CustomImagePicker pickImage={pickImage} image={image} />
         </PageBody><Background/></>
     )
 }
