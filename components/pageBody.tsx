@@ -1,4 +1,4 @@
-import {StyleSheet, View} from "react-native";
+import {ScrollView, StyleSheet} from "react-native";
 import React from "react";
 
 
@@ -8,16 +8,17 @@ interface PageBodyProps {
 
 export function PageBody({children}: PageBodyProps) {
     return (
-        <View style={styles.body}>
-            {children}
-        </View>
+            <ScrollView contentContainerStyle={styles.body}>
+                {children}
+            </ScrollView>
     )
 }
 
 const styles = StyleSheet.create({
     body: {
-        flex: 16,
+        flexGrow: 1,
         marginHorizontal: 15,
         alignItems: "center",
+        justifyContent: "flex-start"
     }
 })

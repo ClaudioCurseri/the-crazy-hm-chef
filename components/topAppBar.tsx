@@ -26,7 +26,7 @@ export function TopAppBar(topAppBarProps: topAppBarProps) {
 
 const styles = StyleSheet.create({
     appBar: {
-        flex: 2,
+        flex: 0,
     },
     title: {
         fontSize: 38,
