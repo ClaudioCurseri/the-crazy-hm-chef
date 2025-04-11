@@ -1,18 +1,21 @@
 import {StyleSheet, TextInput} from "react-native";
+import React from "react";
 
 
 interface CustomTextInputProps {
     title: boolean;
     placeholder: string;
+    setContent: React.Dispatch<React.SetStateAction<string | null>>
+    value: string | null;
 }
 
 export default function CustomTextInput(props: CustomTextInputProps) {
-    const {title, placeholder} = props;
+    const {title, placeholder, setContent, value} = props;
     return (
         title ? (
-            <TextInput style={styles.textInputTitle} placeholder={placeholder} enablesReturnKeyAutomatically />
+            <TextInput style={styles.textInputTitle} placeholder={placeholder} enablesReturnKeyAutomatically onChangeText={setContent} value={value ?? ''} />
             ) : (
-            <TextInput style={styles.textInputText} placeholder={placeholder} enablesReturnKeyAutomatically multiline numberOfLines={15}/>
+            <TextInput style={styles.textInputText} placeholder={placeholder} enablesReturnKeyAutomatically onChangeText={setContent} multiline numberOfLines={15} value={value ?? ''} />
         )
     )
 }

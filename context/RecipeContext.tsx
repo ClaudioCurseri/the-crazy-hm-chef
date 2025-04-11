@@ -6,7 +6,8 @@ const recipes: Recipe[] = []
 
 const RecipeContext = createContext({
     recipes,
-    getRecipeById: (id: string) => recipes.find(recipe => recipe.id === id)
+    getRecipeById: (id: string) => recipes.find(recipe => recipe.id === id),
+    addRecipe: (recipe: Recipe) => {recipes.push(recipe)}
 })
 
 export const useRecipes = () => useContext(RecipeContext);

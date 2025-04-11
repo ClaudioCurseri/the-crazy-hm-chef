@@ -5,8 +5,8 @@ import {StyleSheet} from "react-native";
 export default function Background () {
     return (
         <LinearGradient
-            colors={['white', 'rgba(251,84,84,0.4)']}
-            locations={[0.5, 1]}
+            colors={['white', 'rgba(251,84,84,0.25)']}
+            locations={[0.2, 1]}
             style={styles.gradient}/>
     )
 }
