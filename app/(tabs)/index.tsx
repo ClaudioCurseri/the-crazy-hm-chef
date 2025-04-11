@@ -1,6 +1,6 @@
 import {Image, StyleSheet, Text} from "react-native";
 import {TopAppBar} from "../../components/topAppBar";
-import {PageBody} from "../../components/pageBody";
+import PageBody from "../../components/pageBody";
 import Background from "../../components/background";
 
 export default function Home() {

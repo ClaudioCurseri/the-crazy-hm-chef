@@ -1,5 +1,5 @@
 import {TopAppBar} from "../../components/topAppBar";
-import {PageBody} from "../../components/pageBody";
+import PageBody from "../../components/pageBody";
 import {StyleSheet, Text} from "react-native";
 import Background from "../../components/background";
 import CustomTextInput from "../../components/customTextInput";

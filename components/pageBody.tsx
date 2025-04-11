@@ -6,7 +6,7 @@ interface PageBodyProps {
     children: React.ReactNode;
 }
 
-export function PageBody({children}: PageBodyProps) {
+export default function PageBody({children}: PageBodyProps) {
     return (
             <ScrollView contentContainerStyle={styles.body}>
                 {children}
