@@ -1,17 +1,18 @@
 import {TopAppBar} from "../../components/topAppBar";
 import PageBody from "../../components/pageBody";
-import {Text} from "react-native";
 import Background from "../../components/background";
+import {useRecipes} from "../../context/RecipeContext";
+import RecipeList from "../../components/recipeList";
 
 
 export default function MyRecipes() {
+    const { recipes } = useRecipes()
+
     return (
         <>
             <TopAppBar title={'My Recipes'}/>
             <PageBody>
-                <Text>
-                    Content
-                </Text>
+                <RecipeList recipes={recipes} />
             </PageBody>
             <Background/>
         </>
