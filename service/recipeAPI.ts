@@ -17,6 +17,7 @@ export async function getRecipesByName(name: string): Promise<Recipe[]> {
                 title: recipe["strMeal"],
                 description: recipe["strInstructions"],
                 image: recipe["strMealThumb"],
+                category: recipe["strArea"]
             }
         });
 
