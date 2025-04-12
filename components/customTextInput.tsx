@@ -26,8 +26,8 @@ const styles = StyleSheet.create({
         padding: 5,
         height: 40,
         width: '100%',
-        borderWidth: 2,
-        borderColor: 'white',
+        borderWidth: 1,
+        borderColor: '#ddd',
         borderRadius: 10,
         backgroundColor: 'white',
         elevation: 10
@@ -37,8 +37,8 @@ const styles = StyleSheet.create({
         padding: 5,
         height: 120,
         width: '100%',
-        borderWidth: 2,
-        borderColor: 'white',
+        borderWidth: 1,
+        borderColor: '#ddd',
         borderRadius: 10,
         backgroundColor: 'white',
         elevation: 10
