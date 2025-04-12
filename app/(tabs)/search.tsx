@@ -8,23 +8,28 @@ import {Recipe} from "../../model/recipe";
 import {getRecipesByName} from "../../service/recipeAPI";
 import {useDebouncedCallback} from "use-debounce";
 import RecipeList from "../../components/recipeList";
+import NoRecipes from "../../components/noRecipes";
 
 
 export default function Search() {
     const [searchText, setSearchText] = useState<string | null>(null);
     const [recipes, setRecipes] = useState<Recipe[]>([]);
     const [selectedImage, setSelectedImage] = useState<string | null>(null);
+    const [loading, setLoading] = useState<boolean>(false);
 
     const fetchRecipes = useDebouncedCallback(async (text: string) => {
         if (text.trim() === '') {
             setRecipes([]);
+            setLoading(false);
             return;
         }
         const result = await getRecipesByName(text);
         setRecipes(result);
+        setLoading(false);
     }, 500);
 
     const onChangeSearchText = (text: string) => {
+        setLoading(true);
         setSearchText(text);
         fetchRecipes(text);
     };
@@ -44,7 +49,13 @@ export default function Search() {
                     <Image style={styles.themealdbLogo} source={require("../../assets/themealdbLogo.png")} resizeMode="contain"/>
                     <CustomTextInput title placeholder={"Search for a recipe"} setContent={onChangeSearchText} value={searchText} />
                 </View>
-                <RecipeList recipes={recipes} remoteRecipes onImagePress={onImagePress} />
+                {recipes.length > 0 ? (
+                    <RecipeList recipes={recipes} remoteRecipes onImagePress={onImagePress} />
+                ) : searchText && !loading ? (
+                    <NoRecipes message={"No recipes found."} />
+                ) : (
+                    <NoRecipes message={"Search for recipes on TheMealDB to display them here and to add them to your collection!"} />
+                )}
             </PageBody>
             <Background/>
             {selectedImage && (
