@@ -4,14 +4,22 @@ import {StyleSheet, Text, View} from "react-native";
 
 interface NoRecipesProps {
     message: string;
+    type: 'no-recipes' | 'yet-to-search'
 }
 
 export default function NoRecipes(props: NoRecipesProps) {
-    const { message } = props;
+    const { message, type } = props;
 
     return (
         <View style={styles.noRecipesContainer}>
-            <MaterialIcons name="no-food" size={56} color="black" />
+            {type === 'no-recipes' ? (
+                <MaterialIcons name="no-food" size={56} color="black" />
+            ) : type === 'yet-to-search' ? (
+                <MaterialIcons name="search" size={56} color="black" />
+            ) : (
+                // default
+                <MaterialIcons name="no-food" size={56} color="black" />
+            )}
             <Text style={styles.noRecipesText}>
                 {message}
             </Text>

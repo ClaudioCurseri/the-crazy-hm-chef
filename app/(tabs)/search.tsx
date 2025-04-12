@@ -1,6 +1,6 @@
 import {TopAppBar} from "../../components/topAppBar";
 import PageBody from "../../components/pageBody";
-import {StyleSheet, Text, View, Image, Pressable, Modal} from "react-native";
+import {StyleSheet, View, Image, Pressable, Modal} from "react-native";
 import Background from "../../components/background";
 import CustomTextInput from "../../components/customTextInput";
 import {useState} from "react";
@@ -41,20 +41,17 @@ export default function Search() {
     return (
         <>
             <TopAppBar title={'Search Recipes'} />
-            <PageBody>
                 <View style={styles.searchContainer}>
-                    <Text style={styles.subtitle}>
-                        Search for Recipes using
-                    </Text>
-                    <Image style={styles.themealdbLogo} source={require("../../assets/themealdbLogo.png")} resizeMode="contain"/>
+                    <Image style={styles.themealdbLogo} source={require("../../assets/themealdbLogo.png")} tintColor={'rgba(251,84,84,1)'} resizeMode="contain"/>
                     <CustomTextInput title placeholder={"Search for a recipe"} setContent={onChangeSearchText} value={searchText} />
                 </View>
-                {recipes.length > 0 ? (
+            <PageBody>
+            {recipes.length > 0 ? (
                     <RecipeList recipes={recipes} remoteRecipes onImagePress={onImagePress} />
                 ) : searchText && !loading ? (
-                    <NoRecipes message={"No recipes found."} />
+                    <NoRecipes type={"no-recipes"} message={"No recipes found."} />
                 ) : (
-                    <NoRecipes message={"Search for recipes on TheMealDB to display them here and to add them to your collection!"} />
+                    <NoRecipes type={"yet-to-search"} message={"Search for recipes on TheMealDB to display them here and add them to your collection!"} />
                 )}
             </PageBody>
             <Background/>
@@ -79,11 +76,6 @@ const styles = StyleSheet.create({
         padding: 10,
         width: '100%',
         alignItems: "center",
-    },
-    subtitle: {
-        fontSize: 18,
-        paddingTop: 10,
-        fontWeight: "bold",
     },
     themealdbLogo: {
         height: 50,
