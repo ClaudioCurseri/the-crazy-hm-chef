@@ -1,4 +1,4 @@
-import React, {createContext, useContext} from "react";
+import React, {createContext, useContext, useState} from "react";
 import {Recipe} from "../model/recipe";
 
 
@@ -6,16 +6,21 @@ const recipes: Recipe[] = []
 
 const RecipeContext = createContext({
     recipes,
-    getRecipeById: (id: string) => recipes.find(recipe => recipe.id === id),
-    addRecipe: (recipe: Recipe) => {recipes.push(recipe)}
+    addRecipe: (_ :Recipe) => {}
 })
 
 export const useRecipes = () => useContext(RecipeContext);
 
 export function RecipeProvider({ children }: { children: React.ReactNode }) {
+    const [recipes, setRecipes] = useState<Recipe[]>([]);
+
+    const addRecipe = (recipe: Recipe) => {
+        setRecipes(prev => [...prev, recipe]);
+    };
+
     return (
         <RecipeContext.Provider
-        value={useContext(RecipeContext)}>
+        value={{recipes, addRecipe}}>
             {children}
         </RecipeContext.Provider>
     )
