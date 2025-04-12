@@ -3,6 +3,7 @@ import PageBody from "../../components/pageBody";
 import Background from "../../components/background";
 import {useRecipes} from "../../context/RecipeContext";
 import RecipeList from "../../components/recipeList";
+import NoRecipes from "../../components/noRecipes";
 
 
 export default function MyRecipes() {
@@ -12,7 +13,13 @@ export default function MyRecipes() {
         <>
             <TopAppBar title={'My Recipes'}/>
             <PageBody>
-                <RecipeList recipes={recipes} />
+                {
+                    recipes.length > 0 ? (
+                        <RecipeList recipes={recipes} />
+                    ) : (
+                        <NoRecipes message={"There are no saved recipes yet.\nCreate new recipes to display them here!"} />
+                    )
+                }
             </PageBody>
             <Background/>
         </>
