@@ -17,7 +17,7 @@ export default function MyRecipes() {
                     recipes.length > 0 ? (
                         <RecipeList recipes={recipes} remoteRecipes={false}/>
                     ) : (
-                        <NoRecipes type={"no-recipes"} message={"There are no saved recipes yet.\nCreate new recipes to display them here!"} />
+                        <NoRecipes type={"no-recipes"} message={"There are no saved recipes yet.\nCreate new recipes or add recipes from TheMealDB!"} />
                     )
                 }
             </PageBody>

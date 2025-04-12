@@ -1,6 +1,6 @@
 import {TopAppBar} from "../../components/topAppBar";
 import PageBody from "../../components/pageBody";
-import {StyleSheet, View, Image, Pressable, Modal} from "react-native";
+import {StyleSheet, View, Image, Pressable, Modal, Switch, Text} from "react-native";
 import Background from "../../components/background";
 import CustomTextInput from "../../components/customTextInput";
 import {useState} from "react";
@@ -9,22 +9,36 @@ import {getRecipesByName} from "../../service/recipeAPI";
 import {useDebouncedCallback} from "use-debounce";
 import RecipeList from "../../components/recipeList";
 import NoRecipes from "../../components/noRecipes";
+import {useRecipes} from "../../context/RecipeContext";
 
 
 export default function Search() {
     const [searchText, setSearchText] = useState<string | null>(null);
     const [recipes, setRecipes] = useState<Recipe[]>([]);
+    const [filteredRecipes, setFilteredRecipes] = useState<Recipe[]>([]);
     const [selectedImage, setSelectedImage] = useState<string | null>(null);
     const [loading, setLoading] = useState<boolean>(false);
+    const [isEnabled, setIsEnabled] = useState<boolean>(false);
+    const { recipeExists } = useRecipes();
+
+    const filterRecipes = (recipesToFilter: Recipe[], filterEnabled: boolean) => {
+        if (filterEnabled) {
+            setFilteredRecipes(recipesToFilter.filter(recipe => !recipeExists(recipe)));
+        } else {
+            setFilteredRecipes(recipesToFilter);
+        }
+    }
 
     const fetchRecipes = useDebouncedCallback(async (text: string) => {
         if (text.trim() === '') {
             setRecipes([]);
+            setFilteredRecipes([]);
             setLoading(false);
             return;
         }
         const result = await getRecipesByName(text);
         setRecipes(result);
+        filterRecipes(result, isEnabled);
         setLoading(false);
     }, 500);
 
@@ -38,16 +52,35 @@ export default function Search() {
         setSelectedImage(image);
     }
 
+    const toggleSwitch = () => {
+        const newState = !isEnabled
+        setIsEnabled(newState);
+        filterRecipes(recipes, newState);
+    }
+
+    const onRecipeAdd = (recipe: Recipe) => {
+        setFilteredRecipes(filteredRecipes.filter(r => r.id !== recipe.id));
+    }
+
     return (
         <>
             <TopAppBar title={'Search Recipes'} />
                 <View style={styles.searchContainer}>
                     <Image style={styles.themealdbLogo} source={require("../../assets/themealdbLogo.png")} tintColor={'rgba(251,84,84,1)'} resizeMode="contain"/>
                     <CustomTextInput title placeholder={"Search for a recipe"} setContent={onChangeSearchText} value={searchText} />
+                    <View style={styles.switchContainer}>
+                        <Text>Non-added recipes only</Text>
+                        <Switch style={styles.switch}
+                            trackColor={{true: "#52bd60"}}
+                            thumbColor={isEnabled ? "green" : "#d1ccd1"}
+                            onValueChange={toggleSwitch}
+                            value={isEnabled}
+                        />
+                    </View>
                 </View>
             <PageBody>
-            {recipes.length > 0 ? (
-                    <RecipeList recipes={recipes} remoteRecipes onImagePress={onImagePress} />
+            {filteredRecipes.length > 0 ? (
+                    <RecipeList recipes={filteredRecipes} remoteRecipes onImagePress={onImagePress} onRecipeAdd={isEnabled ? onRecipeAdd : undefined}/>
                 ) : searchText && !loading ? (
                     <NoRecipes type={"no-recipes"} message={"No recipes found."} />
                 ) : (
@@ -93,5 +126,12 @@ const styles = StyleSheet.create({
     image: {
         width: '90%',
         height: '90%',
+    },
+    switchContainer: {
+        flexDirection: "row",
+        alignItems: "center"
+    },
+    switch : {
+        paddingLeft: 10,
     }
 })

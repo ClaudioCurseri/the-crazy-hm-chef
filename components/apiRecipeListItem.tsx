@@ -1,23 +1,23 @@
 import {Recipe} from "../model/recipe";
 import {Image, StyleSheet, Text, TouchableOpacity, View} from "react-native";
 import FontAwesome from '@expo/vector-icons/FontAwesome';
-import {useState} from "react";
 import {useRecipes} from "../context/RecipeContext";
 
 interface ApiRecipeListItemProps {
     recipe: Recipe;
     onImagePress?: (image: string) => void;
+    onRecipeAdd?: (recipe: Recipe) => void;
 }
 
 export default function ApiRecipeListItem(props: ApiRecipeListItemProps) {
-    const { recipe, onImagePress } = props;
-
-    const { addRecipe } = useRecipes();
-    const [recipeAdded, setRecipeAdded] = useState<boolean>(false);
+    const { recipe, onImagePress, onRecipeAdd } = props;
+    const { addRecipe, recipeExists } = useRecipes();
 
     const handleOnRecipeAdd = () => {
         addRecipe(recipe);
-        setRecipeAdded(true);
+        if (onRecipeAdd) {
+            onRecipeAdd(recipe);
+        }
     }
 
     return (
@@ -30,13 +30,9 @@ export default function ApiRecipeListItem(props: ApiRecipeListItemProps) {
                     {recipe.category}
                 </Text>
             </View>
-                <TouchableOpacity style={styles.addButton} onPress={handleOnRecipeAdd} disabled={recipeAdded}>
-                    {recipeAdded ? (
-                        <FontAwesome name="check" size={24} color="white" />
-                    ) : (
-                        <FontAwesome name="plus" size={24} color="white" />
-                    )}
-                </TouchableOpacity>
+            {!recipeExists(recipe) && <TouchableOpacity style={styles.addButton} onPress={handleOnRecipeAdd}>
+                <FontAwesome name="plus" size={24} color="white" />
+                </TouchableOpacity>}
                 <TouchableOpacity style={styles.image} onPress={() => onImagePress ? onImagePress(recipe.image) : () => {}}>
                     <Image source={{uri: recipe.image}} style={styles.image}/>
                 </TouchableOpacity>

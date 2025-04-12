@@ -9,10 +9,11 @@ interface RecipeListProps {
     recipes: Recipe[];
     remoteRecipes: boolean;
     onImagePress?: (image: string) => void;
+    onRecipeAdd?: (recipe: Recipe) => void;
 }
 
 export default function RecipeList(props: RecipeListProps) {
-    const { recipes, remoteRecipes, onImagePress} = props;
+    const { recipes, remoteRecipes, onImagePress, onRecipeAdd} = props;
 
     const [expandedId, setExpandedId] = useState<string | null>(null);
 
@@ -24,7 +25,7 @@ export default function RecipeList(props: RecipeListProps) {
         <View style={styles.container}>
             {recipes.map(recipe => (
                 remoteRecipes ? (
-                    <ApiRecipeListItem recipe={recipe} key={recipe.id} onImagePress={onImagePress}/>
+                    <ApiRecipeListItem recipe={recipe} key={recipe.id} onImagePress={onImagePress} onRecipeAdd={onRecipeAdd}/>
                 ) : (
                     <RecipeListItem recipe={recipe} key={recipe.id} expanded={recipe.id === expandedId} onPress={() => handleItemPress(recipe.id)}/>
                 )

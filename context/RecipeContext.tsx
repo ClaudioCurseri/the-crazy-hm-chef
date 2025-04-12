@@ -7,6 +7,7 @@ const recipes: Recipe[] = []
 const RecipeContext = createContext({
     recipes,
     addRecipe: (_ :Recipe) => {},
+    recipeExists: (_ :Recipe): boolean =>{return false}
 })
 
 export const useRecipes = () => useContext(RecipeContext);
@@ -24,7 +25,7 @@ export function RecipeProvider({ children }: { children: React.ReactNode }) {
 
     return (
         <RecipeContext.Provider
-        value={{recipes, addRecipe}}>
+        value={{recipes, addRecipe, recipeExists}}>
             {children}
         </RecipeContext.Provider>
     )
