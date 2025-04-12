@@ -5,7 +5,7 @@ import React from "react";
 interface CustomTextInputProps {
     title: boolean;
     placeholder: string;
-    setContent: React.Dispatch<React.SetStateAction<string | null>>
+    setContent: (text: string) => void;
     value: string | null;
 }
 
