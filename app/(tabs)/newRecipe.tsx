@@ -58,7 +58,7 @@ export default function NewRecipe() {
             <CustomTextInput title placeholder={"Title of your recipe"} setContent={setTitle} value={title}/>
             <CustomTextInput title={false} placeholder={"Description of your recipe"} setContent={setDescription} value={description}/>
                 <Text style={styles.subtitle}>
-                    Add an Image
+                    Recipe Image
                 </Text>
                 <CustomImagePicker pickImage={pickImage} image={image} />
                 <TouchableOpacity style={[!allFieldsSubmitted ? {opacity : 0.5} : {}, styles.submitButton]} disabled={!allFieldsSubmitted} onPress={saveRecipe}>

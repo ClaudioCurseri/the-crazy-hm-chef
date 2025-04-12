@@ -1,5 +1,4 @@
-import {StyleSheet, Text, useColorScheme, View} from "react-native";
-import {StatusBar} from "expo-status-bar";
+import {StyleSheet, Text, View} from "react-native";
 
 interface topAppBarProps {
     title: string;
@@ -7,14 +6,8 @@ interface topAppBarProps {
 
 export function TopAppBar(topAppBarProps: topAppBarProps) {
     const { title } = topAppBarProps;
-    const colorScheme = useColorScheme();
     return (
         <>
-            <StatusBar
-                style={colorScheme === 'dark' ? 'light' : 'dark'}
-                backgroundColor={colorScheme === 'dark' ? 'black' : 'white'}
-                translucent
-            />
             <View style={styles.appBar}>
                 <Text style={styles.title}>
                     {title}
@@ -30,7 +23,7 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 38,
-        paddingTop: 30,
+        paddingTop: 10,
         paddingLeft: 15,
         fontWeight: 'bold',
         color: 'rgba(251,84,84,1)',

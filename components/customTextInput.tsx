@@ -27,6 +27,7 @@ const styles = StyleSheet.create({
         height: 40,
         width: '100%',
         borderWidth: 2,
+        borderColor: 'white',
         borderRadius: 10,
         backgroundColor: 'white',
         elevation: 10
@@ -37,6 +38,7 @@ const styles = StyleSheet.create({
         height: 120,
         width: '100%',
         borderWidth: 2,
+        borderColor: 'white',
         borderRadius: 10,
         backgroundColor: 'white',
         elevation: 10

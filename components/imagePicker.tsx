@@ -29,6 +29,7 @@ const styles = StyleSheet.create({
         height: 240,
         borderWidth: 2,
         borderRadius: 10,
+        borderColor: 'white',
         backgroundColor: 'white',
         elevation: 10
     },
