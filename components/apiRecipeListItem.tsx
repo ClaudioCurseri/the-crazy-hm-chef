@@ -1,6 +1,8 @@
 import {Recipe} from "../model/recipe";
 import {Image, StyleSheet, Text, TouchableOpacity, View} from "react-native";
-
+import FontAwesome from '@expo/vector-icons/FontAwesome';
+import {useState} from "react";
+import {useRecipes} from "../context/RecipeContext";
 
 interface ApiRecipeListItemProps {
     recipe: Recipe;
@@ -9,6 +11,14 @@ interface ApiRecipeListItemProps {
 
 export default function ApiRecipeListItem(props: ApiRecipeListItemProps) {
     const { recipe, onImagePress } = props;
+
+    const { addRecipe } = useRecipes();
+    const [recipeAdded, setRecipeAdded] = useState<boolean>(false);
+
+    const handleOnRecipeAdd = () => {
+        addRecipe(recipe);
+        setRecipeAdded(true);
+    }
 
     return (
         <View style={styles.itemContainer}>
@@ -20,6 +30,13 @@ export default function ApiRecipeListItem(props: ApiRecipeListItemProps) {
                     {recipe.category}
                 </Text>
             </View>
+                <TouchableOpacity style={styles.addButton} onPress={handleOnRecipeAdd} disabled={recipeAdded}>
+                    {recipeAdded ? (
+                        <FontAwesome name="check" size={24} color="white" />
+                    ) : (
+                        <FontAwesome name="plus" size={24} color="white" />
+                    )}
+                </TouchableOpacity>
                 <TouchableOpacity style={styles.image} onPress={() => onImagePress ? onImagePress(recipe.image) : () => {}}>
                     <Image source={{uri: recipe.image}} style={styles.image}/>
                 </TouchableOpacity>
@@ -61,4 +78,13 @@ const styles = StyleSheet.create({
         marginLeft: 10,
         marginRight: 10,
     },
+    addButton: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: 60,
+        height: 60,
+        borderRadius: 15,
+        marginLeft: 3,
+        backgroundColor: 'green'
+},
 });
