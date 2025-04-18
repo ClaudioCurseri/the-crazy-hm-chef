@@ -9,7 +9,14 @@ interface RecipeContextProps {
 
 const RecipeContext = createContext<RecipeContextProps | undefined>(undefined);
 
-export const useRecipes = () => useContext(RecipeContext);
+export const useRecipes = () => {
+    const context = useContext(RecipeContext);
+    if (!context) {
+        throw new Error("Context must be used within a RecipeProvider");
+    }
+    return context;
+};
+
 
 export function RecipeProvider({ children }: { children: React.ReactNode }) {
     const [recipes, setRecipes] = useState<Recipe[]>([]);
