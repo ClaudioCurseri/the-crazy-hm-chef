@@ -5,7 +5,6 @@ import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 import CustomTabButton from "../../components/customTabBarButton";
 
 const activeColor = '#ff2f2f';
-const inactiveColor = '#000000';
 
 export default function TabLayout() {
     return (
@@ -38,7 +37,6 @@ export default function TabLayout() {
                                 label="Home"
                                 icon={<Ionicons name="home-sharp" size={24} color={focused ? activeColor : 'gray'} />}
                                 activeColor={activeColor}
-                                inactiveColor={inactiveColor}
                             />
                         );
                     },
@@ -58,7 +56,6 @@ export default function TabLayout() {
                                 label="New Recipe"
                                 icon={<MaterialCommunityIcons name="hamburger-plus" size={24} color={focused ? activeColor : 'gray'} />}
                                 activeColor={activeColor}
-                                inactiveColor={inactiveColor}
                             />
                         );
                     },
@@ -78,7 +75,6 @@ export default function TabLayout() {
                                 label="My Recipes"
                                 icon={<FontAwesome6 name="list-ul" size={24} color={focused ? activeColor : 'gray'} />}
                                 activeColor={activeColor}
-                                inactiveColor={inactiveColor}
                             />
                         );
                     },
@@ -98,7 +94,6 @@ export default function TabLayout() {
                                 label="Search"
                                 icon={<Ionicons name="search-sharp" size={24} color={focused ? activeColor : 'gray'} />}
                                 activeColor={activeColor}
-                                inactiveColor={inactiveColor}
                             />
                         );
                     },

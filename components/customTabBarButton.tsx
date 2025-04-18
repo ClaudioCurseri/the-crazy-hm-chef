@@ -7,7 +7,6 @@ type CustomTabButtonProps = {
     icon: React.ReactNode;
     label: string;
     activeColor: string;
-    inactiveColor: string;
 };
 
 export default function CustomTabButton (props: CustomTabButtonProps)  {
@@ -17,7 +16,6 @@ export default function CustomTabButton (props: CustomTabButtonProps)  {
         icon,
         label,
         activeColor,
-        inactiveColor
     } = props;
 
     return (
@@ -25,7 +23,7 @@ export default function CustomTabButton (props: CustomTabButtonProps)  {
             onPress={onPress}
             style={[
                 styles.container,
-                { borderColor: focused ? activeColor : inactiveColor },
+                { borderColor: focused ? activeColor : 'gray' },
             ]}
         >
             {icon}
