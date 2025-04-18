@@ -55,8 +55,8 @@ export default function NewRecipe() {
                 <Text style={styles.subtitle}>
                     Recipe Information
                 </Text>
-            <CustomTextInput title placeholder={"Title of your recipe"} setContent={setTitle} value={title}/>
-            <CustomTextInput title={false} placeholder={"Description of your recipe"} setContent={setDescription} value={description}/>
+            <CustomTextInput small placeholder={"Title of your recipe"} setContent={setTitle} value={title}/>
+            <CustomTextInput small={false} placeholder={"Description of your recipe"} setContent={setDescription} value={description}/>
                 <Text style={styles.subtitle}>
                     Recipe Image
                 </Text>

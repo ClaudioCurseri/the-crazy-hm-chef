@@ -67,7 +67,7 @@ export default function Search() {
             <TopAppBar title={'Search Recipes'} />
                 <View style={styles.searchContainer}>
                     <Image style={styles.themealdbLogo} source={require("../../assets/themealdbLogo.png")} tintColor={'rgba(251,84,84,1)'} resizeMode="contain"/>
-                    <CustomTextInput title placeholder={"Search for a recipe"} setContent={onChangeSearchText} value={searchText} />
+                    <CustomTextInput small placeholder={"Search for a recipe"} setContent={onChangeSearchText} value={searchText} />
                     <View style={styles.switchContainer}>
                         <Text>Non-added recipes only</Text>
                         <Switch style={styles.switch}

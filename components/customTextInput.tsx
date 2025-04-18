@@ -3,25 +3,25 @@ import React from "react";
 
 
 interface CustomTextInputProps {
-    title: boolean;
+    small: boolean;
     placeholder: string;
     setContent: (text: string) => void;
     value: string | null;
 }
 
 export default function CustomTextInput(props: CustomTextInputProps) {
-    const {title, placeholder, setContent, value} = props;
+    const {small, placeholder, setContent, value} = props;
     return (
-        title ? (
-            <TextInput style={styles.textInputTitle} placeholder={placeholder} enablesReturnKeyAutomatically onChangeText={setContent} value={value ?? ''} />
+        small ? (
+            <TextInput style={styles.textInputSmall} placeholder={placeholder} enablesReturnKeyAutomatically onChangeText={setContent} value={value ?? ''} />
             ) : (
-            <TextInput style={styles.textInputText} placeholder={placeholder} enablesReturnKeyAutomatically onChangeText={setContent} multiline numberOfLines={15} value={value ?? ''} />
+            <TextInput style={styles.textInput} placeholder={placeholder} enablesReturnKeyAutomatically onChangeText={setContent} multiline numberOfLines={15} value={value ?? ''} />
         )
     )
 }
 
 const styles = StyleSheet.create({
-    textInputTitle: {
+    textInputSmall: {
         marginBottom: 15,
         padding: 5,
         height: 40,
@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         elevation: 10
     },
-    textInputText: {
+    textInput: {
         marginBottom: 15,
         padding: 5,
         height: 120,
