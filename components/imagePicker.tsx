@@ -5,6 +5,9 @@ interface CustomImagePickerProps {
     image: string | null;
 }
 
+/**
+ * Style component for the image picker.
+ */
 export default function CustomImagePicker(props: CustomImagePickerProps) {
     const { pickImage, image } = props;
 

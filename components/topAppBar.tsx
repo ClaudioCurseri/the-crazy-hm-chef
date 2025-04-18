@@ -4,6 +4,9 @@ interface topAppBarProps {
     title: string;
 }
 
+/**
+ * App bar that is displayed on top of every page.
+ */
 export function TopAppBar(topAppBarProps: topAppBarProps) {
     const { title } = topAppBarProps;
     return (

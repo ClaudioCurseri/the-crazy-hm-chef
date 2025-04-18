@@ -6,6 +6,11 @@ interface PageBodyProps {
     children: React.ReactNode;
 }
 
+/**
+ * Component that is wrapped around the content of every app page.
+ * Used for global styling value like side margins.
+ * Supports scrolling.
+ */
 export default function PageBody({children}: PageBodyProps) {
     return (
             <ScrollView contentContainerStyle={styles.body}>

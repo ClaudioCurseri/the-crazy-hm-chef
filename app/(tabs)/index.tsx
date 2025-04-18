@@ -3,6 +3,9 @@ import {TopAppBar} from "../../components/topAppBar";
 import PageBody from "../../components/pageBody";
 import Background from "../../components/background";
 
+/**
+ * Home page. Starting point of the application.
+ */
 export default function Home() {
     return (
         <>

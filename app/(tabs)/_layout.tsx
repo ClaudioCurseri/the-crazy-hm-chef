@@ -6,6 +6,9 @@ import CustomTabButton from "../../components/customTabBarButton";
 
 const activeColor = '#ff2f2f';
 
+/**
+ * Tab layout of the different pages of the app.
+ */
 export default function TabLayout() {
     return (
         <Tabs
@@ -18,11 +21,9 @@ export default function TabLayout() {
                     elevation: 50,
                     minHeight: 55,
                 },
-                tabBarLabelStyle: {
-                    fontWeight: 'bold',
-                },
             }}
         >
+            {/* home tab */}
             <Tabs.Screen
                 name="index"
                 options={{
@@ -42,6 +43,7 @@ export default function TabLayout() {
                     },
                 }}
             />
+            {/* new recipe tab */}
             <Tabs.Screen
                 name="newRecipe"
                 options={{
@@ -61,6 +63,7 @@ export default function TabLayout() {
                     },
                 }}
             />
+            {/* my recipes tab */}
             <Tabs.Screen
                 name="myRecipes"
                 options={{
@@ -80,6 +83,7 @@ export default function TabLayout() {
                     },
                 }}
             />
+            {/* search tab */}
             <Tabs.Screen
                 name="search"
                 options={{

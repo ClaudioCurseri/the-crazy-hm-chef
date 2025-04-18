@@ -9,6 +9,9 @@ type CustomTabButtonProps = {
     activeColor: string;
 };
 
+/**
+ * Custom tab bar button for improved style.
+ */
 export default function CustomTabButton (props: CustomTabButtonProps)  {
     const {
         focused,

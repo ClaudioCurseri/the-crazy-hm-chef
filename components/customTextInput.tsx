@@ -9,6 +9,10 @@ interface CustomTextInputProps {
     value: string | null;
 }
 
+/**
+ * Custom text input field.
+ * Can be small or large depending on the props.
+ */
 export default function CustomTextInput(props: CustomTextInputProps) {
     const {small, placeholder, setContent, value} = props;
     return (

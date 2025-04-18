@@ -9,6 +9,9 @@ interface ApiRecipeListItemProps {
     onRecipeAdd?: (recipe: Recipe) => void;
 }
 
+/**
+ * List item for recipes that were fetched from themealdb.
+ */
 export default function ApiRecipeListItem(props: ApiRecipeListItemProps) {
     const { recipe, onImagePress, onRecipeAdd } = props;
     const { addRecipe, recipeExists } = useRecipes();

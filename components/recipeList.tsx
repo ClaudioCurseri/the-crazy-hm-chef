@@ -12,11 +12,16 @@ interface RecipeListProps {
     onRecipeAdd?: (recipe: Recipe) => void;
 }
 
+/**
+ * List that contains either RecipeListItem or ApiRecipeListItem. Renders as many list items as there are recipes from the props.
+ */
 export default function RecipeList(props: RecipeListProps) {
     const { recipes, remoteRecipes, onImagePress, onRecipeAdd} = props;
 
     const [expandedId, setExpandedId] = useState<string | null>(null);
 
+    // callback that is called when pressed on a standard RecipeListItem
+    // sets the id of the recipe of which the list item should be expanded
     const handleItemPress = (id: string) => {
         setExpandedId(recipeId => (recipeId === id ? null : id));
     };

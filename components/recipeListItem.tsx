@@ -8,6 +8,10 @@ interface RecipeListItemProps {
     onPress: () => void;
 }
 
+/**
+ * Standard recipe list item.
+ * Can be pressed on in order to display the full content of the recipe.
+ */
 export default function RecipeListItem(props: RecipeListItemProps) {
     const { recipe, expanded, onPress } = props;
 

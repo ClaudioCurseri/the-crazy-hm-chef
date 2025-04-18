@@ -7,6 +7,10 @@ interface NoRecipesProps {
     type: 'no-recipes' | 'yet-to-search'
 }
 
+/**
+ * Component that is displayed when no recipes exist in a recipe list.
+ * Accepts a custom icon and error text to display.
+ */
 export default function NoRecipes(props: NoRecipesProps) {
     const { message, type } = props;
 

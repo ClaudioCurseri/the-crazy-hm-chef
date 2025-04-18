@@ -9,13 +9,18 @@ import CustomImagePicker from "../../components/imagePicker";
 import {useRecipes} from "../../context/RecipeContext";
 import {Recipe} from "../../model/recipe";
 
+/**
+ * Page that contains a form to create a new recipe.
+ */
 export default function NewRecipe() {
+    // selected title, description and image of the recipe
     const [image, setImage] = useState<string | null>(null);
     const [title, setTitle] = useState<string | null>(null);
     const [description, setDescription] = useState<string | null>(null);
-
+    // recipes from context
     const { addRecipe, recipes } = useRecipes();
 
+    // function that opens the gallery image selector
     const pickImage = async () => {
         let result = await ImagePicker.launchImageLibraryAsync({
             mediaTypes: ['images'],
@@ -29,16 +34,18 @@ export default function NewRecipe() {
         }
     };
 
+    // function that saves the recipe in the context.
     const saveRecipe = () => {
+        // create recipes from attributes
         const recipe: Recipe = {
             id: `recipe-${recipes.length}`,
             title: title!!,
             description: description!!,
             image: image!!,
         }
-
+        // add recipe to context
         addRecipe(recipe);
-
+        // clear all forms
         setTitle(null);
         setDescription(null);
         setImage(null);

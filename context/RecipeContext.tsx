@@ -17,14 +17,16 @@ export const useRecipes = () => {
     return context;
 };
 
-
 export function RecipeProvider({ children }: { children: React.ReactNode }) {
+    // list of recipes
     const [recipes, setRecipes] = useState<Recipe[]>([]);
 
+    // function that determines whether a recipe exists in the list of recipes
     const recipeExists = (recipe: Recipe) => {
         return recipes.some(r => r.id === recipe.id);
     }
 
+    // function that adds a recipe to the list of recipes
     const addRecipe = (recipe: Recipe) => {
         if (!recipeExists(recipe)) setRecipes(prev => [...prev, recipe]);
     };

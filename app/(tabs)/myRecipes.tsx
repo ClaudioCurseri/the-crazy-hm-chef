@@ -5,8 +5,11 @@ import {useRecipes} from "../../context/RecipeContext";
 import RecipeList from "../../components/recipeList";
 import NoRecipes from "../../components/noRecipes";
 
-
+/**
+ * Page that contains a list of all saved recipes.
+ */
 export default function MyRecipes() {
+    // recipes from context provider
     const { recipes } = useRecipes()
 
     return (

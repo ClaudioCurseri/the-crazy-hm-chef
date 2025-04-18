@@ -1,7 +1,9 @@
 import {LinearGradient} from "expo-linear-gradient";
 import {StyleSheet} from "react-native";
 
-
+/**
+ * Contains a linear gradient that is displayed in the background of every page.
+ */
 export default function Background () {
     return (
         <LinearGradient

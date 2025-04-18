@@ -1,6 +1,9 @@
 import { Stack } from 'expo-router';
 import {RecipeProvider} from "../context/RecipeContext";
 
+/**
+ * Root layout of the app.
+ */
 export default function RootLayout() {
     return (
         <RecipeProvider>
