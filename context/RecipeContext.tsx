@@ -1,14 +1,13 @@
 import React, {createContext, useContext, useState} from "react";
 import {Recipe} from "../model/recipe";
 
+interface RecipeContextProps {
+    recipes: Recipe[];
+    addRecipe: (recipe: Recipe) => void;
+    recipeExists: (recipe: Recipe) => boolean;
+}
 
-const recipes: Recipe[] = []
-
-const RecipeContext = createContext({
-    recipes,
-    addRecipe: (_ :Recipe) => {},
-    recipeExists: (_ :Recipe): boolean =>{return false}
-})
+const RecipeContext = createContext<RecipeContextProps | undefined>(undefined);
 
 export const useRecipes = () => useContext(RecipeContext);
 
